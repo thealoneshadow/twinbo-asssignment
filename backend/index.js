@@ -1,18 +1,17 @@
-// apps/backend/index.js
-
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 3001; // THIS IS IMPORTANT ✅
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.get('/', (req, res) => {
   res.send('✅ Backend is running!');
 });
 
-app
+// THIS LINE IS REQUIRED!
+app.listen(PORT, () => {
+  console.log(`🚀 Server listening on port ${PORT}`);
+});
