@@ -24,3 +24,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+.sign-in{
+  color: var(--background);
+  background: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:6px;
+  border-radius: 5px;
+}
+
+.sign-in:hover{
+  color: var(--background);
+  background: var(--foreground);
+  opacity: .5;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:6px;
+  border-radius: 5px;
+}
