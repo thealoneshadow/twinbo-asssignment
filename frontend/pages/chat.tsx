@@ -1,11 +1,13 @@
 "use client"
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import { useUser } from '@clerk/nextjs'
 import Header from '@/app/components/Header';
 import "../app/globals.css";
-import "../style/chat.css";
-import { Spin } from 'antd';
+import "./chat.css";
 import axios from 'axios';
+
+import dynamic from 'next/dynamic';
+const Spin = dynamic(() => import('antd').then(mod => mod.Spin), { ssr: false })
 
 
 const ChatPage: React.FC = () => {
@@ -29,9 +31,9 @@ const ChatPage: React.FC = () => {
 
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, []);
+    // }, []);
 
     // const addUser = async () =>{
     //     const clerkId = user?.id;
