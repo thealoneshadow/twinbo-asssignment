@@ -44,14 +44,6 @@ const ChatPage: React.FC = () => {
     );
     
 
-    
-//   useEffect(() => {
-//     async function fetchData() {
-//      await addUser();
-//     };
-//     fetchData();
-//   },[isLoaded])
-
 
   const handleSend = async () => {
     if (!input.trim()) return;
