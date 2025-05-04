@@ -3,7 +3,7 @@ const getChatsValidator = require("./getChatsValidator");
 const getChatsController = async (req, res) => {
 
     //for validations and data checking
-    getChatsValidator.getChats(req.body).then((data) => {
+    getChatsValidator.getChats(req.query).then((data) => {
             res.status(200).json({
                 success: true,
                 isAuth: true,

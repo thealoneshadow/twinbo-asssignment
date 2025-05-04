@@ -43,9 +43,6 @@ const ChatPage: React.FC = () => {
             clerkId,
             userName: user?.fullName,
         });
-        if(result.status !== 200){
-            getChats();
-        }
         console.log(result.data);
         await getChats();
 
