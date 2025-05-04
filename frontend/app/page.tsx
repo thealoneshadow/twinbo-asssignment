@@ -8,7 +8,7 @@ export default function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-[-.01em]">
           Welcome to {" "}
-          <span className="text-foreground dark:text-background">Secret Echo</span>!
+          <span className="text-foreground ">Secret Echo</span>!
         </h1>
         
         <div className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
@@ -65,7 +65,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Linkeidn Profile
+          Linkedin Profile
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"

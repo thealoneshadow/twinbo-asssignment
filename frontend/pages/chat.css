@@ -23,6 +23,25 @@
     align-items: center;
     height: 100vh;
   }
+
+  .login-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   
+  }
+
+  .login-text{
+    font-size: 20px;
+    background-color: #202123;
+    color: white;
+    padding:10px;
+    border-radius: 10px;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
   
   .sidebar {
     width: 250px;

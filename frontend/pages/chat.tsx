@@ -32,14 +32,21 @@ const ChatPage: React.FC = () => {
     return (
       <div>
         <Header />
-        Loading...
+        <div className="spinner-ui">
+              <Spin tip="Loading" size="large"></Spin>
+            </div>
       </div>
     );
   if (!isSignedIn)
     return (
       <div>
         <Header />
-        Please sign in
+        <div className="login-heading">
+              <h1 className="login-text">
+                Kindly Login or SignUp to use the chat feature
+              </h1>
+            </div>
+        
       </div>
     );
     
