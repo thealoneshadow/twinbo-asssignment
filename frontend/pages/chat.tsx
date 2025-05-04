@@ -63,6 +63,10 @@ const ChatPage: React.FC = () => {
     setLoader(false);
     const message = { question: input, answer: answer };
     addChats(message);
+    const element = document.getElementsByClassName(`chat-window`)[0] as HTMLElement;
+  if (element) {
+    element.scrollTop = element.scrollHeight;
+  }
   };
 
 
@@ -158,18 +162,18 @@ const ChatPage: React.FC = () => {
         <aside className="sidebar">
           <div className="logo">🤖 Smart Echo AI</div>
           <nav>
-            <button className="new-chat">+ New Chat</button>
+            Coming Soon...
           </nav>
         </aside>
         <main className="chat-main">
-          <p className="welcome-heading">Welcome , {user.fullName}!</p>
+          <p className="welcome-heading">Welcome , {user.fullName ? user.fullName : "User"}!</p>
           <Header />
 
           <div className="chat-window">
             {messages.map((msg, idx) => (
               <>
                 <div key={idx} className="message-question">
-                  <div className="user">{user.fullName + " (You)"}</div>
+                  <div className="user">{user.fullName ? user.fullName : "User" + " (You)"}</div>
                   <div className="bubble">{msg.question}</div>
                 </div>
                 <div key={idx+"1"} className="message">
@@ -178,13 +182,14 @@ const ChatPage: React.FC = () => {
                 </div>
               </>
             ))}
-          </div>
-
-          {loader && (
+            {loader && (
             <div className="spinner-ui">
               <Spin tip="Loading" size="large"></Spin>
             </div>
           )}
+          </div>
+
+
 
           <div className="input-bar">
             <input
