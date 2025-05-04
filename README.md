@@ -15,34 +15,28 @@ Auth: Clerk (OAuth2, JWT)
 AI: Gemini Flask 2.0
 
 
-/frontend
-│
-├── /app                     → App Router structure (if using Next.js 13+)
-│   ├── /chat                → Chat page route
-│   │   └── page.tsx         → Chat page entry point
-│   ├── /api                 → Client-side API proxy (if needed)
-│   └── layout.tsx          → Root layout
-│
-├── /components              → Reusable UI components
-│   ├── Header.tsx           → Navigation bar with Clerk
-│   └── ChatWindow.tsx       → Main chat UI
-│
-├── /hooks                  → Custom React hooks (e.g., useChat, useScroll)
-│
-├── /lib                    → Client-side utility functions (e.g., axios setup)
-│   └── axiosInstance.ts
-│
-├── /styles                 → Global CSS and Tailwind config
-│   ├── globals.css
-│   └── chat.css
-│
-├── /types                  → Shared TypeScript types/interfaces
-│   └── chat.ts
-│
-├── .env.local              → Local environment variables
-├── next.config.js
-├── tsconfig.json
-└── package.json
+ Architecture Overview
+🔹 Frontend (Next.js)
+Structure:
+
+bash
+Copy
+Edit
+/app
+  ├── /chat        → Chat page (authenticated route)
+  ├── /components  → Header, MessageBox, etc.
+  └── /utils       → Shared helpers
+Auth Handling:
+
+Uses <SignedIn>, <SignedOut>, and UserButton from Clerk.
+
+Protected route logic using useUser() + redirect logic.
+
+Chat UI:
+
+Messages rendered with map() from Zustand state.
+
+On form submission, the message is sent to the backend and auto-scrolled using a ref.
 
 
 
