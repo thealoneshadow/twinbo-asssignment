@@ -4,7 +4,7 @@ import { useUser } from '@clerk/nextjs'
 import Header from '@/app/components/Header';
 import "../app/globals.css";
 import "../style/chat.css";
-import { Alert, Flex, Spin } from 'antd';
+import { Spin } from 'antd';
 import axios from 'axios';
 
 
@@ -33,37 +33,37 @@ const ChatPage: React.FC = () => {
 
     }, []);
 
-    const addUser = async () =>{
-        const clerkId = user?.id;
-        const result = await axios.post(`${process.env.BACKEND_URL}/api/add-user`, {
-            clerkId,
-            userName: user?.username,
-        });
-        console.log(result.data);
-    }
+    // const addUser = async () =>{
+    //     const clerkId = user?.id;
+    //     const result = await axios.post(`${process.env.BACKEND_URL}/api/add-user`, {
+    //         clerkId,
+    //         userName: user?.username,
+    //     });
+    //     console.log(result.data);
+    // }
 
-    const addChats = async (message: { question: String; answer: String; }) =>{
-        const userId = user?.id;
-        const question = message.question;
-        const answer = message.answer;
-        const result = await axios.post(`${process.env.BACKEND_URL}/api/add-chats`, {
-            userId,
-            question,
-            answer
-        });
-        console.log(result.data);
-    }
+    // const addChats = async (message: { question: String; answer: String; }) =>{
+    //     const userId = user?.id;
+    //     const question = message.question;
+    //     const answer = message.answer;
+    //     const result = await axios.post(`${process.env.BACKEND_URL}/api/add-chats`, {
+    //         userId,
+    //         question,
+    //         answer
+    //     });
+    //     console.log(result.data);
+    // }
 
-    const getChats = async () =>{
-        const userId = user?.id;
-        const result = await axios.get(`${process.env.BACKEND_URL}/api/get-chats`, {
-            params: { userId }
-        });
-        console.log(result.data);
-    }
+    // const getChats = async () =>{
+    //     const userId = user?.id;
+    //     const result = await axios.get(`${process.env.BACKEND_URL}/api/get-chats`, {
+    //         params: { userId }
+    //     });
+    //     console.log(result.data);
+    // }
 
     const aiResponse = async () =>{
-        const userId = user?.id;
+        // const userId = user?.id;
         const prompt = input;
         const historyList = messages.slice(-10);
 
