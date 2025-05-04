@@ -48,36 +48,24 @@ AI: Gemini Flask 2.0
 
 
 
-/backend
-│
-├── /src
-│   ├── /controllers         → Route logic (addUser, addChats, getChats, geminiAI)
-│   │   ├── chatController.js
-│   │   └── userController.js
-│
-│   ├── /routes              → API routes
-│   │   ├── chatRoutes.js
-│   │   └── userRoutes.js
-│
-│   ├── /models              → Mongoose schemas
-│   │   ├── Chat.js
-│   │   └── User.js
-│
-│   ├── /services            → External APIs (Gemini AI, etc.)
-│   │   └── geminiService.js
-│
-│   ├── /middlewares         → Error handlers, auth middleware (optional)
-│
-│   ├── /config              → DB connection and constants
-│   │   └── db.js
-│
-│   ├── /utils               → Helper functions (e.g., logger, validators)
-│
-│   └── index.js             → Entry point (app setup)
-│
-├── .env
-├── package.json
-└── README.md
+Backend (Express)
+Structure:
+
+bash
+Copy
+Edit
+/src
+  ├── /controllers    → Route logic (chat, user)
+  ├── /routes         → API routes
+  ├── /models         → Mongoose schemas
+  ├── /services       → Gemini integration
+  ├── /config         → DB connection
+  └── index.js        → App entry point
+Key Logic:
+
+/api/chats → addChats, getChats, integrated with Gemini response
+
+/api/users → addUser on first sign-in (Clerk ID based)
 
 
 | Limitation                       | Details                                                                                                                  |
