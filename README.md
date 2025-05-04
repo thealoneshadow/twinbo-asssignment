@@ -34,8 +34,6 @@ Protected route logic using useUser() + redirect logic.
 
 Chat UI:
 
-Messages rendered with map() from Zustand state.
-
 On form submission, the message is sent to the backend and auto-scrolled using a ref.
 
 
