@@ -6,6 +6,12 @@ addUserValidator.addUser = (body) => {
   return new Promise(async (resolve, reject) => {
     try {
       const { clerkId, userName} = body;
+      const existingUser = await Users.findOne({ clerkId });
+
+      if (existingUser) {
+        return resolve(existingUser);
+      }
+
       const saveUser = new Users({
         clerkId,
         userName

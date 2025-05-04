@@ -79,6 +79,19 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
   
+   
+  .message-question {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    max-width: 80%;
+    align-items: flex-end;
+    margin-left: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    float: right !important;
+  }
+
   .user {
     font-weight: bold;
     margin-bottom: 4px;

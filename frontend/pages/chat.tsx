@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { useUser } from '@clerk/nextjs'
 import Header from '@/app/components/Header';
 import "../app/globals.css";
@@ -25,44 +25,63 @@ const ChatPage: React.FC = () => {
       setLoader(true);
       const answer =  await aiResponse();
       console.log(answer);
-      setMessages([...messages, { question: input, answer: '' }])
+      setMessages([...messages, { question: input, answer: answer }])
       setInput('');
       setLoader(false);
-
+      const message = { question: input, answer: answer };
+      addChats(message);  
     }
 
-    // useEffect(() => {
+    useEffect(() => {
+        addUser();
+    }, []);
 
-    // }, []);
+    const addUser = async () =>{
+        try{
+            const clerkId = user?.id;
+        const result = await axios.post(`https://twinbo-asssignment.onrender.com/api/add-user`, {
+            clerkId,
+            userName: user?.fullName,
+        });
+        if(result.status !== 200){
+            getChats();
+        }
+        console.log(result.data);
+        await getChats();
 
-    // const addUser = async () =>{
-    //     const clerkId = user?.id;
-    //     const result = await axios.post(`${process.env.BACKEND_URL}/api/add-user`, {
-    //         clerkId,
-    //         userName: user?.username,
-    //     });
-    //     console.log(result.data);
-    // }
+        }
+        catch(err){
+            console.log(err);
+            const clerkId = user?.id;
+        const result = await axios.post(`https://twinbo-asssignment.onrender.com/api/add-user`, {
+            clerkId,
+            userName: user?.fullName,
+        });
+        console.log(result.data);
+        await getChats();
+        }
+        
+    }
 
-    // const addChats = async (message: { question: String; answer: String; }) =>{
-    //     const userId = user?.id;
-    //     const question = message.question;
-    //     const answer = message.answer;
-    //     const result = await axios.post(`${process.env.BACKEND_URL}/api/add-chats`, {
-    //         userId,
-    //         question,
-    //         answer
-    //     });
-    //     console.log(result.data);
-    // }
+    const addChats = async (message: { question: String; answer: String; }) =>{
+        const userId = user?.id;
+        const question = message.question;
+        const answer = message.answer;
+        const result = await axios.post(`https://twinbo-asssignment.onrender.com/api/add-chats`, {
+            userId,
+            question,
+            answer
+        });
+        console.log(result.data);
+    }
 
-    // const getChats = async () =>{
-    //     const userId = user?.id;
-    //     const result = await axios.get(`${process.env.BACKEND_URL}/api/get-chats`, {
-    //         params: { userId }
-    //     });
-    //     console.log(result.data);
-    // }
+    const getChats = async () =>{
+        const userId = user?.id;
+        const result = await axios.get(`https://twinbo-asssignment.onrender.com/api/get-chats`, {
+            params: { userId }
+        });
+        console.log(result.data);
+    }
 
     const aiResponse = async () =>{
         // const userId = user?.id;
@@ -85,7 +104,7 @@ const ChatPage: React.FC = () => {
             prompt,
             history
         });
-        return result;
+        return result?.data.result;
     }
 
 
@@ -101,7 +120,7 @@ const ChatPage: React.FC = () => {
         <div>
             <div className="app-container">
       <aside className="sidebar">
-        <div className="logo">🤖 ChatBot</div>
+        <div className="logo">🤖 Smart Echo AI</div>
         <nav>
           <button className="new-chat">+ New Chat</button>
         </nav>
@@ -112,10 +131,17 @@ const ChatPage: React.FC = () => {
       
         <div className="chat-window">
           {messages.map((msg, idx) => (
-            <div key={idx} className="message">
-              <div className="user">You</div>
+            <>
+            <div key={idx} className="message-question">
+              <div className="user">{user.fullName + " (You)"}</div>
               <div className="bubble">{msg.question}</div>
             </div>
+            <div key={idx} className="message">
+            <div className="user">You</div>
+            <div className="bubble">{msg.answer}</div>
+          </div>
+            </>
+            
           ))}
         </div>
 
