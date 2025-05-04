@@ -107,7 +107,7 @@ const ChatPage: React.FC = () => {
       }
     );
 
-    let maindata = [];
+    const maindata = [];
     for (let i = result.data.result.length-1; i >= 0 ; i--) {
       maindata.push({
         question: result.data.result[i].question,
@@ -115,7 +115,7 @@ const ChatPage: React.FC = () => {
       });
     }
     setMessages(maindata);
-    console.log(result.data);
+    
   };
 
   const aiResponse = async () => {
