@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3001; 
 
 app.use(cors({
-  origin: ['https://twinbo-frontend.vercel.app'], 
+  origin: ['https://twinbo-frontend.vercel.app','https://twinbo-frontend-knlc94fo5-thealoneshadows-projects.vercel.app', 'http://localhost:3000'], 
   credentials: true
 }));
 app.use(express.json());
