@@ -81,7 +81,7 @@ const ChatPage: React.FC = () => {
     }
   };
 
-  const addChats = async (message: { question: String; answer: String }) => {
+  const addChats = async (message: { question: string; answer: string }) => {
     const userId = user?.id;
     const question = message.question;
     const answer = message.answer;
